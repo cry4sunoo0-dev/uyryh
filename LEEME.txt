@@ -1,0 +1,43 @@
+MI HOME - launcher propio para tu Hisense (Android TV)   [version "cristal"]
+=======================================================
+Estilo iPhone "glass": todo es cristal esmerilado translucido sobre tu fondo animado.
+- Dock inferior de cristal con los iconos NORMALES de cada app, recoloreados a tu paleta
+  (tinta + perla + aro lila hielo) para que combinen con tu collage blanco y negro.
+- Al moverte, el icono enfocado crece, los vecinos crecen un poco (efecto dock de Mac),
+  aparece su sticker con rebote y se ve su nombre debajo.
+- Reloj y marca arriba en pastillas de cristal. Stickers flotando sobre el dock.
+
+COMO CONVERTIRLO EN APK (sin instalar nada pesado, usando GitHub gratis)
+1) Crea cuenta en github.com y un repositorio nuevo (boton "New"), llamalo MiHome.
+2) Descomprime este zip. En el repositorio: "uploading an existing file"
+   y arrastra TODO el contenido de la carpeta MiHome (incluida la carpeta .github).
+   Si la carpeta .github no sube, crea el archivo a mano: "Add file > Create new file",
+   nombre  .github/workflows/build.yml  y pega el contenido de ese archivo.
+3) Pestaña "Actions" > "Build APK" > "Run workflow". Espera 3-5 minutos.
+4) Entra a la ejecucion terminada y baja "MiHome-apk" (abajo, en Artifacts). Descomprime: app-debug.apk.
+
+COMO INSTALARLO EN LA TV
+1) Pasa app-debug.apk a la TV (USB, o Drive + app Downloader).
+   Si te pide permiso para "instalar apps desconocidas", activalo.
+2) Abre Mi Home. Para dejarlo como inicio: presiona el boton Home del control
+   y, si pregunta que launcher usar, elige Mi Home > "Siempre".
+   Si tu Hisense no pregunta, desactiva el launcher original en Ajustes > Apps
+   o usa el script personalizar_tv.bat (ADB).
+
+COMO USARLO
+- Izquierda/Derecha: moverte por las apps. OK: abrir.
+- Mantener OK sobre una app: ocultarla (para quitar basura de Hisense).
+  Para recuperar las ocultas: Ajustes > Apps > Mi Home > Borrar datos.
+- Primero salen Netflix, YouTube, Disney+, Prime Video, Max, Crunchyroll, Spotify,
+  Twitch, Play Store, Minecraft, Xbox, Fortnite, HDMI y Ajustes; luego el resto en orden A-Z.
+
+PERSONALIZAR
+- Colores: arriba de MainActivity.kt, objeto "Pal" (INK = tinta, PEARL = perla, ICE = aro de enfoque).
+- Fondo: app/src/main/res/raw/fondo_video.mp4 y res/drawable-nodpi/fondo_img.png
+  IMPORTANTE: si cambias el fondo, regenera tambien res/drawable-nodpi/fondo_blur.jpg
+  (es el fondo desenfocado que se ve "a traves" del cristal; promedio de los cuadros del video + desenfoque).
+- Stickers: res/drawable-nodpi/s_*.png
+- Los banners viejos (b_*.png) ya no se usan y se quitaron.
+
+IMPORTANTE: este codigo no se pudo compilar ni probar en un TV real al crearlo.
+Si GitHub marca error rojo, copia el texto del error y mandaselo a Claude para corregirlo.
